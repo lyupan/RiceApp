@@ -7,6 +7,8 @@
 	<typeAliases>
 		<typeAlias alias="User" type="edu.rice.model.User" />
 		<typeAlias alias="Course" type="edu.rice.model.Course" />
+		<typeAlias alias="TodoCategory" type="edu.rice.model.TodoCategory" />
+		<typeAlias alias="TodoItem" type="edu.rice.model.TodoItem" />
 	</typeAliases>
 	
 	<!-- 实体接口映射资源 -->
@@ -16,6 +18,8 @@
 	<mappers>
 		<mapper resource="edu/rice/mapper/userMapper.xml" />
 		<mapper resource="edu/rice/mapper/courseMapper.xml" />
+		<mapper resource="edu/rice/mapper/todoCategoryMapper.xml" />
+		<mapper resource="edu/rice/mapper/todoItemMapper.xml" />
 	</mappers>
 	
 		

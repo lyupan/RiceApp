@@ -18,7 +18,6 @@ public class Course {
     private int session;
     private String meetingDays;
 
-
 	private String startTime;
 	private String endTime;
     private String location;
@@ -30,7 +29,6 @@ public class Course {
     private int xlstWaitCount;
     private String catalogInstPermission;
 
-    
 	public String getTermCode() {
 		return termCode;
 	}

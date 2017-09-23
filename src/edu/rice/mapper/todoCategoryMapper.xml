@@ -7,6 +7,10 @@
 		select * from todocategories where category = #{category};
 	</select>
 
+	<select id="allTodoCategories" resultType="TodoCategory">
+		select * from todocategories;
+	</select>
+
 	<insert id="addTodoCategory">
 		insert into todocategories values(#{category}, #{color}, #{priority}, #{notifyMethod});
 	</insert>

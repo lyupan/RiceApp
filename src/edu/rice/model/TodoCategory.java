@@ -5,7 +5,7 @@ public class TodoCategory {
 	private String category;
 	private String color;
 	private String priority;
-	private String nofifyMethod;
+	private String notifyMethod;
 	
 	
 	public String getPriority() {
@@ -14,11 +14,11 @@ public class TodoCategory {
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
-	public String getNofifyMethod() {
-		return nofifyMethod;
+	public String getNotifyMethod() {
+		return notifyMethod;
 	}
-	public void setNofifyMethod(String nofifyMethod) {
-		this.nofifyMethod = nofifyMethod;
+	public void setNotifyMethod(String notifyMethod) {
+		this.notifyMethod = notifyMethod;
 	}
 	public String getCategory() {
 		return category;
@@ -32,7 +32,4 @@ public class TodoCategory {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
-	
-	
 }

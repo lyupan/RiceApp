@@ -26,7 +26,7 @@ public class UserController {
 	@Autowired
 	public CourseService courseService;
 	
-	@RequestMapping(value="/sync")
+	@RequestMapping(value="/sync", method = RequestMethod.GET)
 	@ResponseBody
 	public ResultBean<?> syncWithRice() {
 		Map<String, String> map = new HashMap<String, String>();

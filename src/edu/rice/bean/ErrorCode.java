@@ -15,8 +15,9 @@ public enum ErrorCode {
 	
 	ENROLL_FAIL("1002", "enroll failed"),
 	
-	WRONG_PARAMS("1003", "wrong params");
+	WRONG_PARAMS("1003", "wrong params"),
 	
+	DUPLICATES("1004", "duplication exists");
 	
 //	REQUEST_EXPIRE("1002", "request expired"),	
 //	REQUEST_DENY("1003", "request denied"),
