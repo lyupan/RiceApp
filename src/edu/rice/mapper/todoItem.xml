@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.rice.mapper.TodoItemMapper">
+	<select id="getTodoItem" resultType="TodoItem">
+		select * from todoitems join todocategories on todoitems.category = todocategories.category where name = #{name};
+	</select>
+
+	<insert id="addTodoItem">
+		insert into todoitems values(#{name}, #{category.category}, #{date}, #{beginTime}, #{endTime});
+	</insert>
+	
+	<update id="updateTodoItem">
+		update todoitems set category = #{category.category}, date = #{date}, beginTime = #{beginTime}, endTime = #{endTime} where name = #{name};
+	</update>
+
+	<delete id="deleteTodoItem">
+		delete from todoitems where name = #{name};
+	</delete>
+</mapper>
