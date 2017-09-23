@@ -26,4 +26,7 @@ public class LoginController {
 			return ResultBean.failure("1001");
 		return ResultBean.success(u);
 	}
+	
+	
+	
 }

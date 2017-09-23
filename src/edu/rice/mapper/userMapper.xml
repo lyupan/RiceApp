@@ -8,10 +8,10 @@
  -->
 <mapper namespace="edu.rice.mapper.UserMapper">
 	
-		<resultMap id="userResult" type="User">
-			<result column="email" property="email" />
-			<result column="password" property="password" />
-		</resultMap>
+	<resultMap id="userResult" type="User">
+		<result column="email" property="email" />
+		<result column="password" property="password" />
+	</resultMap>
 	
 	 <select id="login" resultType="User">
 	 	select email, password from user where email=#{email} and password=#{password};

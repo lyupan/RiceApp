@@ -16,14 +16,18 @@ public class Course {
     private String description;
     private String creditHours;
     private int session;
+    private String startTime;
+	private String endTime;
     private String location;
     private String instructor;
+    private String xlinkCourse;
+    
     private int maxEnrollment;
     private int actualEnrollment;
     private int xlstWaitCapacity;
     private int xlstWaitCount;
     private String catalogInstPermission;
-    private String xlinkCourse;
+
     
 	public String getTermCode() {
 		return termCode;
@@ -164,5 +168,26 @@ public class Course {
 	@XmlElement(name="xlink-course")
 	public void setXlinkCourse(String xlinkCourse) {
 		this.xlinkCourse = xlinkCourse;
+	}
+	
+    public String getStartTime() {
+		return startTime;
+	}
+    
+    @XmlElement(name="start-time")
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	@XmlElement(name="end-time")
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+	
+	public String toString() {
+		return "Subj:" + getSubject() + " course-number:" +  getCourseNumber() + 
+				" Crn:" + getCrn() + " start-time:" + getStartTime() + " end-time:" + getEndTime();
 	}
 }

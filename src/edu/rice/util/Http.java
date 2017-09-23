@@ -3,8 +3,10 @@ package edu.rice.util;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -36,16 +38,15 @@ public final class Http {
 
 	}
 	
-	public List<Course> getCousrses(String term, String title, String course, 
-			String crn, String coll, String dept, String subj) {
+	public List<Course> getCousrses(Map<String, String> map) {
 		List<Course> results = new LinkedList<Course>();
-		term = "201710";
-		title = "";
-		course = "532";
-		crn = "";
-		coll = "";
-		dept = "";
-		subj = "COMP";
+		String term = map.getOrDefault("term", "");
+		String title = map.getOrDefault("title", "");
+		String course = map.getOrDefault("course", "");
+		String crn = map.getOrDefault("crn", "");
+		String coll = map.getOrDefault("coll", "");
+		String dept = map.getOrDefault("dept", "");;
+		String subj = map.getOrDefault("subj", "");
 		
 		String url = "https://courses.rice.edu/admweb/!SWKSECX.main?" + 
 				"term=" + term + 
@@ -61,23 +62,30 @@ public final class Http {
 			
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
 			Courses courses = (Courses) unmarshaller.unmarshal(new URL(url));//(new StreamSource( xmlContent));
-
+			if (courses.courses == null)
+				return results;
 			for (Course c:courses.courses)
 	        	results.add(c);
-	        	
 		} catch (JAXBException e) {
 			e.printStackTrace();
+			return results;
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
+			return results;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return results;
 		}
 		return results;
+		
  	}
 	
 	public static void main(String[] args) throws URISyntaxException {
-//		
-//		for (Course c : Http.Singleton.getCousrses())
-//			System.out.println(c.getSubject() + c.getCourseNumber());
+		Map<String, String> map = new HashMap<String, String>();
+//		map.put("subj", "COMP130");
+		map.put("term", "201710");
+		map.put("dept", "COMP");
+		for (Course c : Http.Singleton.getCousrses(map))
+			System.out.println(c);
 	}
 }
