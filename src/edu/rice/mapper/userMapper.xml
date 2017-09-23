@@ -8,13 +8,19 @@
  -->
 <mapper namespace="edu.rice.mapper.UserMapper">
 	
-	<resultMap id="userResult" type="User">
-		<result column="email" property="email" />
-		<result column="password" property="password" />
-	</resultMap>
-	
 	 <select id="login" resultType="User">
 	 	select email, password from user where email=#{email} and password=#{password};
 	 </select>
+	 
+	 <insert id="addCourse">
+	 	insert into users_courses values(#{email}, #{crn}, #{termCode});
+	 </insert>
 
+	<delete id="dropCourse">
+		delete from users_courses where email = #{email} and crn = #{crn} and termCode = #{termCode}; 
+	</delete>
+
+	<select id="allCourses" resultType="Course">
+		select * from courses join users_courses on courses.crn = users_courses.crn and users_courses.termCode = courses.termCode where users_courses.email = #{email};
+	</select>
 </mapper>

@@ -16,7 +16,10 @@ public class Course {
     private String description;
     private String creditHours;
     private int session;
-    private String startTime;
+    private String meetingDays;
+
+
+	private String startTime;
 	private String endTime;
     private String location;
     private String instructor;
@@ -189,5 +192,13 @@ public class Course {
 	public String toString() {
 		return "Subj:" + getSubject() + " course-number:" +  getCourseNumber() + 
 				" Crn:" + getCrn() + " start-time:" + getStartTime() + " end-time:" + getEndTime();
+	}
+	
+    public String getMeetingDays() {
+		return meetingDays;
+	}
+    @XmlElement(name="meeting-days")
+	public void setMeetingDays(String meetingDays) {
+		this.meetingDays = meetingDays;
 	}
 }

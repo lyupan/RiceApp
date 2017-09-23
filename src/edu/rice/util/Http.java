@@ -25,6 +25,8 @@ http://courses.rice.edu/admweb/%21SWKSECX.main?term=201220&amp;title=&amp;course
 public final class Http {
 	
 	public static final Http Singleton = new Http();
+	private static final String DEFAULT_TERM = "201810";
+	
 	
 	private Http() {
 		
@@ -40,7 +42,7 @@ public final class Http {
 	
 	public List<Course> getCousrses(Map<String, String> map) {
 		List<Course> results = new LinkedList<Course>();
-		String term = map.getOrDefault("term", "");
+		String term = map.getOrDefault("term", DEFAULT_TERM);
 		String title = map.getOrDefault("title", "");
 		String course = map.getOrDefault("course", "");
 		String crn = map.getOrDefault("crn", "");
@@ -61,6 +63,7 @@ public final class Http {
 			jc = JAXBContext.newInstance(Courses.class);
 			
 			Unmarshaller unmarshaller = jc.createUnmarshaller();
+			System.out.println(new URL(url));
 			Courses courses = (Courses) unmarshaller.unmarshal(new URL(url));//(new StreamSource( xmlContent));
 			if (courses.courses == null)
 				return results;
@@ -83,8 +86,9 @@ public final class Http {
 	public static void main(String[] args) throws URISyntaxException {
 		Map<String, String> map = new HashMap<String, String>();
 //		map.put("subj", "COMP130");
-		map.put("term", "201710");
+//		map.put("term", "201710");
 		map.put("dept", "COMP");
+//		map.put("crn", "14570");
 		for (Course c : Http.Singleton.getCousrses(map))
 			System.out.println(c);
 	}

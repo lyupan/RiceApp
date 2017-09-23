@@ -11,7 +11,12 @@ public enum ErrorCode {
 	
 	DEFAULT_ERROR("9000", "undefied"),
 	
-	PERMISSION_DENY("1001", "permission denied");
+	PERMISSION_DENY("1001", "permission denied"),
+	
+	ENROLL_FAIL("1002", "enroll failed"),
+	
+	WRONG_PARAMS("1003", "wrong params");
+	
 	
 //	REQUEST_EXPIRE("1002", "request expired"),	
 //	REQUEST_DENY("1003", "request denied"),

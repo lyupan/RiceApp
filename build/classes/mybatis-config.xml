@@ -6,6 +6,7 @@
 	<!-- 实体类,简称 -设置别名  -->
 	<typeAliases>
 		<typeAlias alias="User" type="edu.rice.model.User" />
+		<typeAlias alias="Course" type="edu.rice.model.Course" />
 	</typeAliases>
 	
 	<!-- 实体接口映射资源 -->
