@@ -10,6 +10,8 @@ public interface UserMapper {
 	
 	
 	User login(Map<String, Object> map);
+	
+	
 
 	/**
 	 * Enroll a specific course for this user identified by email.

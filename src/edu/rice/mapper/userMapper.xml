@@ -16,6 +16,7 @@
 	 	insert into users_courses values(#{email}, #{crn}, #{termCode});
 	 </insert>
 
+
 	<delete id="dropCourse">
 		delete from users_courses where email = #{email} and crn = #{crn} and termCode = #{termCode}; 
 	</delete>
@@ -24,3 +25,5 @@
 		select * from courses join users_courses on courses.crn = users_courses.crn and users_courses.termCode = courses.termCode where users_courses.email = #{email};
 	</select>
 </mapper>
+
+

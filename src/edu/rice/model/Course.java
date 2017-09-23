@@ -23,8 +23,7 @@ public class Course {
 	private String endTime;
     private String location;
     private String instructor;
-    private String xlinkCourse;
-    
+    private String xlinkCourse;   
     private int maxEnrollment;
     private int actualEnrollment;
     private int xlstWaitCapacity;

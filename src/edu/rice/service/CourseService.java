@@ -1,5 +1,10 @@
 package edu.rice.service;
 
-public class CourseService {
+import java.util.List;
+
+import edu.rice.model.Course;
+
+public interface CourseService {
 	
+	void addCourses(List<Course> courses);
 }

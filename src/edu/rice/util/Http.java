@@ -17,6 +17,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import edu.rice.model.Course;
+import edu.rice.service.CourseService;
+import edu.rice.service.impl.CourseServiceImpl;
 
 /*
 http://courses.rice.edu/admweb/%21SWKSECX.main?term=201220&amp;title=&amp;course=&amp;crn=&amp;coll=&amp;dept=&amp;subj=LING
@@ -84,12 +86,5 @@ public final class Http {
  	}
 	
 	public static void main(String[] args) throws URISyntaxException {
-		Map<String, String> map = new HashMap<String, String>();
-//		map.put("subj", "COMP130");
-//		map.put("term", "201710");
-		map.put("dept", "COMP");
-//		map.put("crn", "14570");
-		for (Course c : Http.Singleton.getCousrses(map))
-			System.out.println(c);
 	}
 }
