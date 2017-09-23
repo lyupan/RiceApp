@@ -26,7 +26,6 @@ public class UserController {
 	@Autowired
 	public CourseService courseService;
 	
-	
 	@RequestMapping(value="/sync")
 	@ResponseBody
 	public ResultBean<?> syncWithRice() {
