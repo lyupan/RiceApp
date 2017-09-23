@@ -20,15 +20,22 @@ public class Course {
 	private String endTime;
     private String location;
     private String instructor;
-    private String xlinkCourse;
-    
+    private String xlinkCourse;   
     private int maxEnrollment;
     private int actualEnrollment;
     private int xlstWaitCapacity;
     private int xlstWaitCount;
     private String catalogInstPermission;
+    private String meetingDays;
 
     
+	public String getMeetingDays() {
+		return meetingDays;
+	}
+	@XmlElement(name="meeting-days")
+	public void setMeetingDays(String meetingDays) {
+		this.meetingDays = meetingDays;
+	}
 	public String getTermCode() {
 		return termCode;
 	}
