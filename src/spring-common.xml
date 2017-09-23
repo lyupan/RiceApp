@@ -14,9 +14,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/mydatabase" />
-		<property name="username" value="test" />
-		<property name="password" value="test" />
+		<property name="url" value="jdbc:mysql://localhost:3306/riceapp" />
+		<property name="username" value="hackrice" />
+		<property name="password" value="hackrice" />
 	</bean>
 
 	<!--

@@ -10,7 +10,7 @@ public final class Token {
 	
 	public static final Token Singleton = new Token();
 	
-	/*
+	/**
 	 * Default secret key
 	 */
 	private static final String JWT_SECRET = "HACKRICE2017APP#";
