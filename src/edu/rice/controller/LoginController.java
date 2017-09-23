@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.rice.bean.ResultBean;
@@ -18,7 +19,8 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultBean<User> login(String email, String password) {
+	public ResultBean<User> login(@RequestParam String email, @RequestParam String password) {
+		System.out.println(email + " " + password);
 		User u = userService.login(email, password);
 		if (u == null)
 			return ResultBean.failure("1001");
