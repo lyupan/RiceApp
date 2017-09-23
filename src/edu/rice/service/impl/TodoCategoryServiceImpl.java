@@ -1,5 +1,7 @@
 package edu.rice.service.impl;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,11 +13,12 @@ import edu.rice.service.TodoCategoryService;
 @Transactional
 public class TodoCategoryServiceImpl implements TodoCategoryService {
 
+	@Resource
 	private TodoCategoryMapper todoCategoryMapper;
 	
 	@Override
 	public TodoCategory getTodoCategory(String category) {
-		return null;
+		return todoCategoryMapper.getTodoCategory(category);
 	}
 
 	@Override
