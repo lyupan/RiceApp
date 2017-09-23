@@ -14,5 +14,8 @@
 	 	insert into courses (crn,termCode,termDescription,subject,courseNumber,section,school,department,title,description,creditHours,session,startTime, endTime,location,instructor,xlinkCourse,meetingDays) 
 	 				values (#{crn},#{termCode},#{termDescription},#{subject},#{courseNumber},#{section},#{school},#{department},#{title},#{description},#{creditHours},#{session},#{startTime},#{endTime},#{location},#{instructor},#{xlinkCourse},#{meetingDays})
 	 </select>
-
+	
+	<delete id="deleteCourses">
+		delete from courses;
+	</delete>
 </mapper>

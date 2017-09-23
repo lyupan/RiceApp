@@ -6,10 +6,15 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import edu.rice.mapper.CourseMapper;
 import edu.rice.model.Course;
 import edu.rice.service.CourseService;
 
+@Service
+@Transactional
 public class CourseServiceImpl implements CourseService {
 
 	@Resource
@@ -39,5 +44,10 @@ public class CourseServiceImpl implements CourseService {
 			map.put("meetingDays", course.getMeetingDays());
 			courseMapper.addCourses(map);
 		}
+	}
+
+	@Override
+	public int deleteCourses() {
+		return courseMapper.deleteCourses();
 	}
 }

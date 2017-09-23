@@ -15,6 +15,7 @@
 	-->
 	<mappers>
 		<mapper resource="edu/rice/mapper/userMapper.xml" />
+		<mapper resource="edu/rice/mapper/courseMapper.xml" />
 	</mappers>
 	
 		
