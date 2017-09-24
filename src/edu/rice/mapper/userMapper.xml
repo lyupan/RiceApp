@@ -26,8 +26,8 @@
 	</select>
 	
 	<select id="getCourses" resultType="Course">
-		select * from courses  where termCode = #{termCode}<if test="department != null">
-    								     						and department = #{department}
+		select * from courses  where termCode = #{termCode}<if test="subj != null">
+    								     						and subject = #{subj}
   									                       </if> 
 	</select>
 </mapper>

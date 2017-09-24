@@ -3,6 +3,7 @@ package edu.rice.controller;
 import java.util.ArrayList;
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,22 +11,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.rice.bean.ResultBean;
 import edu.rice.model.Course;
+import edu.rice.service.UserService;
 import edu.rice.service.impl.UserServiceImpl;
 
 @Controller
 public class eventController {
-	static int t[] = new int[]{ 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
+	
+	private static int t[] = new int[]{ 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
+	@Autowired
+	private UserService userService;
+	
+	
 	@RequestMapping(value="/getEventsWithinMonth", method = RequestMethod.POST)
 	@ResponseBody
 	public ResultBean<?> eventsWithinMonth(String email, String year, String month) {
 		if (email == null || year == null || month == null)
-			return ResultBean.failure("");
-		List<Course> courses = new UserServiceImpl().allCourses(email);
+			return ResultBean.failure("1003");
 		
+		List<Course> courses = userService.allCourses(email);
 		return ResultBean.success(getCoursesWithinGivenMonth(courses, year, month));
 	}
 	
-	public List<Map<String, String>> getCoursesWithinGivenMonth(List<Course> courses, String Year, String  Month) {
+	
+	private List<Map<String, String>> getCoursesWithinGivenMonth(List<Course> courses, String Year, String  Month) {
 		int year = Integer.parseInt(Year);
 		int month = Integer.parseInt(Month);
 		List<Map<String, String>> res = new ArrayList<Map<String, String>>();
@@ -58,7 +66,7 @@ public class eventController {
 		return res;
 	}
 
-	public int dayofweek(int d, int m, int y){
+	private int dayofweek(int d, int m, int y){
 	    if (m < 3) {
 			y--;
 		}

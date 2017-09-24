@@ -60,6 +60,7 @@ public final class Http {
 				"&coll=" + coll +
 				"&dept=" + dept +
 				"&subj=" + subj;
+		//url = "https://courses.rice.edu/admweb/!SWKSECX.main?term=201810&amp%3btitle=&amp%3bcourse=&amp%3bcrn=&amp%3bcoll=&amp%3bdept=&amp%3bsubj=";
 		JAXBContext jc;
 		try {
 			jc = JAXBContext.newInstance(Courses.class);
@@ -69,8 +70,11 @@ public final class Http {
 			Courses courses = (Courses) unmarshaller.unmarshal(new URL(url));//(new StreamSource( xmlContent));
 			if (courses.courses == null)
 				return results;
-			for (Course c:courses.courses)
-	        	results.add(c);
+			for (Course c:courses.courses) {
+	        	if (c.getInstructor().length() > 50)
+	        		c.setInstructor(c.getInstructor().substring(0, 50));
+				results.add(c);
+			}
 		} catch (JAXBException e) {
 			e.printStackTrace();
 			return results;

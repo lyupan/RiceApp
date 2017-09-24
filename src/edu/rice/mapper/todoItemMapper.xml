@@ -27,6 +27,19 @@
 		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where email = #{email};
 	</select>
 	
+	<select id="itemsInDateRange" resultMap="todoItemResult">
+		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where Year(date) = #{year} and Month(date) = #{month} and email = #{email};
+	</select>
+	
+	<select id="searchTodoItemsByMonth" resultMap="todoItemResult">
+		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where Year(date) = #{year} and Month(date) = #{month} and email = #{email};
+	</select>
+	
+	<select id="getTodoItemsByCategory" resultMap="todoItemResult">
+		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where category = #{category} and email = #{email};
+	</select>
+	
+	
 	<insert id="addTodoItem">
 		insert into todoitems values(#{name}, #{date}, #{beginTime}, #{endTime}, #{category}, #{email}, #{description});
 	</insert>

@@ -16,4 +16,12 @@ public interface TodoItemMapper {
 	public void deleteTodoItem(Map<String, String> map);
 	
 	public List<TodoItem> allTodoItems(String email);
+	
+	public List<TodoItem> itemsInDateRange(Map<String, String> map);
+	
+	public List<TodoItem> searchTodoItemsByMonth(Map<String, Object> map);
+	
+	public List<TodoItem> getTodoItemsByCategory(Map<String, String> map);
+	
+	public List<TodoItem> getTodoItemsByPriority(Map<String, String> map);
 }

@@ -63,4 +63,26 @@ public class TodoItemController {
 		todoItemService.updateTodoItem(map);
 		return ResultBean.success();
 	}
+	
+	@RequestMapping(value="/todoitems/search", method=RequestMethod.POST)
+	@ResponseBody
+	public ResultBean<List<TodoItem>> searchTodoItemByMonth(String year, String month, String email) {
+		System.out.println(year + "-" + month);
+		
+		int beginYear = Integer.parseInt(year);
+		int beginMonth = Integer.parseInt(month);
+		return ResultBean.success(todoItemService.searchTodoItemsByMonth(beginYear, beginMonth, email));
+	}
+	
+	@RequestMapping(value="/todoitems/category", method=RequestMethod.POST)
+	@ResponseBody
+	public ResultBean<List<TodoItem>> getTodoItemsByCategory(String category, String email) {
+		return ResultBean.success(todoItemService.getTodoItemsByCategory(category, email));
+	}
+	
+	@RequestMapping(value="/todoitems/priority", method=RequestMethod.POST)
+	@ResponseBody
+	public ResultBean<List<TodoItem>> getTodoItemsByPriority(String priority, String email) {
+		return ResultBean.success(todoItemService.getTodoItemsByPriority(priority, email));
+	}
 }

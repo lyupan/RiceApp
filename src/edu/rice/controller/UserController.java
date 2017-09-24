@@ -31,12 +31,14 @@ public class UserController {
 	public ResultBean<?> syncWithRice() {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("term", "201810");
-		map.put("subj", "COMP");
-		List<Course> courses = Http.Singleton.getCousrses(map);
+		String[] subjs = {"COMP", "ELEC", "ASIA","CHEM", "ESCI"};
 		System.out.println("Delete all courses, records " + courseService.deleteCourses());
-		
-		System.out.println("add courses " + courses.size());
-		courseService.addCourses(courses);
+		for (int i = 0; i < subjs.length; i++) {
+			map.put("subj", subjs[i]);
+			List<Course> courses = Http.Singleton.getCousrses(map);
+			courseService.addCourses(courses);
+			System.out.println("add courses " + courses.size());
+		}
 		return ResultBean.success();
 	}
 	
@@ -56,10 +58,18 @@ public class UserController {
 		return ResultBean.success(userService.allCourses(email));
 	}
 	
-	@RequestMapping(value="/courses/{termCode}/{department}", method = RequestMethod.GET)
+	@RequestMapping(value="/courses/{termCode}/{subj}", method = RequestMethod.GET)
 	@ResponseBody
-	public ResultBean<?> searchCourses(@PathVariable String termCode, @PathVariable String department){
-		return ResultBean.success(userService.getCourses(termCode, department));
+	public ResultBean<?> searchCourses(@PathVariable String termCode, @PathVariable String subj){
+		return ResultBean.success(userService.getCourses(termCode, subj));
 	}
 	
+	@RequestMapping(value="/drop/{termCode}/{crn}", method = RequestMethod.POST)
+	@ResponseBody
+	public ResultBean<?> dropCourses(String email, @PathVariable String termCode, @PathVariable String crn) {
+		if (email == null)
+			return ResultBean.failure("1003");
+		userService.dropCourse(email, termCode, crn);
+		return ResultBean.success();
+	}
 }

@@ -37,5 +37,6 @@ public interface UserService {
 	 * @return
 	 */
 	List<Course> allCourses(String email);
-	List<Course> getCourses(String termCode, String department);
+	
+	List<Course> getCourses(String termCode, String subj);
 }
