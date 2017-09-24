@@ -8,6 +8,7 @@
 		<result column="date" property="date"/>
 		<result column="beginTime" property="beginTime"/>
 		<result column="endTime" property="endTime"/>
+		<result column="description" property="description"/>
 		<association property="todoCategory" column="todoCategory" javaType="TodoCategory" resultMap="todoCategoryResult"/>
 	</resultMap>
 
@@ -19,24 +20,19 @@
 	</resultMap>
 	
 	<select id="getTodoItem" resultMap="todoItemResult">
-		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where name = #{name} and email = #{email};
+		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where name = #{name1} and email = #{email};
 	</select>
 	
 	<select id="allTodoItems" resultMap="todoItemResult">
 		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where email = #{email};
 	</select>
 	
-<!--
-	<select id="allTodoItems" resultMap="todoItemResult">
-		select name, todoCategory, date, beginTime, endTime, email, color, priority, notifyMethod from todoitems join todocategories on todoitems.todoCategory = todocategories.category where email = #{email};
-	</select>
-  -->
 	<insert id="addTodoItem">
-		insert into todoitems values(#{name}, #{category.category}, #{date}, #{beginTime}, #{endTime}, #{email});
+		insert into todoitems values(#{name}, #{date}, #{beginTime}, #{endTime}, #{category}, #{email}, #{description});
 	</insert>
 	
 	<update id="updateTodoItem">
-		update todoitems set todoCategory = #{category.category}, date = #{date}, beginTime = #{beginTime}, endTime = #{endTime} where name = #{name} and email = #{email};
+		update todoitems set todoCategory = #{category}, date = #{date}, beginTime = #{beginTime}, endTime = #{endTime}, description = #{description} where name = #{name} and email = #{email};
 	</update>
 
 	<delete id="deleteTodoItem">

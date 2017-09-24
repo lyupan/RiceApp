@@ -7,6 +7,7 @@ public class TodoItem {
 	private String date;
 	private String beginTime;
 	private String endTime;
+	private String description;
 	
 	public String getName() {
 		return name;
@@ -14,11 +15,17 @@ public class TodoItem {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public TodoCategory getCategory() {
+	public TodoCategory getTodoCategory() {
 		return todoCategory;
 	}
-	public void setCategory(TodoCategory category) {
-		this.todoCategory = category;
+	public void setTodoCategory(TodoCategory todoCategory) {
+		this.todoCategory = todoCategory;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getDate() {
 		return date;

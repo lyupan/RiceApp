@@ -51,15 +51,14 @@ public class UserController {
 	@RequestMapping(value="/courses", method = RequestMethod.POST)
 	@ResponseBody
 	public ResultBean<?> myCourses(String email) {
-		System.out.println("my courses" + email);
 		if (email == null)
 			return ResultBean.failure("");
 		return ResultBean.success(userService.allCourses(email));
 	}
 	
-	@RequestMapping(value="/getcourses", method = RequestMethod.POST)
+	@RequestMapping(value="/courses/{termCode}/{department}", method = RequestMethod.GET)
 	@ResponseBody
-	public ResultBean<?> searchCourses(String termCode, String department){
+	public ResultBean<?> searchCourses(@PathVariable String termCode, @PathVariable String department){
 		return ResultBean.success(userService.getCourses(termCode, department));
 	}
 	

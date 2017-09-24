@@ -8,10 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.rice.bean.ResultBean;
-import edu.rice.model.TodoCategory;
 import edu.rice.model.TodoItem;
 import edu.rice.service.TodoItemService;
 
@@ -29,37 +29,38 @@ public class TodoItemController {
 	
 	@RequestMapping(value="/todoitem", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultBean<?> addTodoItem(Map<String, String> map) {
-		if (map.get("email") == null || map.get("name") == null || map.get("category") == null)
+	public ResultBean<?> addTodoItem(@RequestParam Map<String, String> map) {
+		System.out.println(map.get("email"));
+		System.out.println(map.get("category"));
+		if (map.get("email") == null || map.get("name") == null || map.get("date") == null || map.get("category") == null)
 			return ResultBean.failure("1003");
-		TodoItem todoItem = new TodoItem();
-		todoItem.setName(map.get("name"));
-		todoItem.setBeginTime(map.get("beginTime"));
-		todoItem.setEndTime(map.get("endTime"));
-		todoItem.setDate(map.get("date"));
-		TodoCategory todoCategory = new TodoCategory();
-		todoCategory.setCategory(map.get("category"));
-		todoItemService.addTodoItem(todoItem, map.get("email"));
+		todoItemService.addTodoItem(map);
 		return ResultBean.success();
 	}
 	
-	@RequestMapping(value="/{name}", method = RequestMethod.POST)
+	@RequestMapping(value="/todoitem/{name}", method = RequestMethod.POST)
 	@ResponseBody
 	public ResultBean<TodoItem> getTodoItem(@PathVariable String name, String email) {
+		if (name == null || email == null)
+			return ResultBean.failure("1003");
 		return ResultBean.success(todoItemService.getTodoItem(name, email));
 	}
 	
-	@RequestMapping(value="/{name}", method = RequestMethod.DELETE)
+	@RequestMapping(value="/todoitem/{name}/delete", method = RequestMethod.POST)
 	@ResponseBody
 	public ResultBean<?> deleteTodoItem(@PathVariable String name, String email) {
+		if (name == null || email == null)
+			return ResultBean.failure("1003");
 		todoItemService.deleteTodoItem(name, email);
 		return ResultBean.success();
 	}
 	
-	@RequestMapping(value="/{name}", method = RequestMethod.PUT)
+	@RequestMapping(value="/todoitem/update", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultBean<?> updateTodoItem(TodoItem todoItem, String email) {
-		todoItemService.updateTodoItem(todoItem, email);
+	public ResultBean<?> updateTodoItem(@RequestParam Map<String, String> map) {
+		if (map.get("email") == null || map.get("name") == null || map.get("category") == null)
+			return ResultBean.failure("1003");
+		todoItemService.updateTodoItem(map);
 		return ResultBean.success();
 	}
 }

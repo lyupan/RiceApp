@@ -1,6 +1,8 @@
 package edu.rice.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -20,22 +22,28 @@ public class TodoItemServiceImpl implements TodoItemService {
 	
 	@Override
 	public TodoItem getTodoItem(String name, String email) {
-		return todoItemMapper.getTodoItem(name, email);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("name", name);
+		map.put("email", email);
+		return todoItemMapper.getTodoItem(map);
 	}
 
 	@Override
-	public void addTodoItem(TodoItem todoItem, String email) {
-		todoItemMapper.addTodoItem(todoItem, email);
+	public void addTodoItem(Map<String, String> map) {
+		todoItemMapper.addTodoItem(map);
 	}
 
 	@Override
-	public void updateTodoItem(TodoItem todoItem, String email) {
-		todoItemMapper.updateTodoItem(todoItem, email);
+	public void updateTodoItem(Map<String, String> map) {
+		todoItemMapper.updateTodoItem(map);
 	}
 
 	@Override
 	public void deleteTodoItem(String name, String email) {
-		todoItemMapper.deleteTodoItem(name, email);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("name", name);
+		map.put("email", email);
+		todoItemMapper.deleteTodoItem(map);
 	}
 
 	@Override
