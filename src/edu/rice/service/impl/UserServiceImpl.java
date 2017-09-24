@@ -58,4 +58,13 @@ public class UserServiceImpl implements UserService {
 		return usermapper.allCourses(email);
 	}
 
+
+	@Override
+	public List<Course> getCourses(String termCode, String department) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("termCode",termCode);
+		map.put("department", department);
+		return usermapper.getCourses(map);
+	}
+
 }
