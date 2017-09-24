@@ -3,7 +3,7 @@ package edu.rice.model;
 public class TodoItem {
 	
 	private String name;
-	private TodoCategory category;
+	private TodoCategory todoCategory;
 	private String date;
 	private String beginTime;
 	private String endTime;
@@ -15,10 +15,10 @@ public class TodoItem {
 		this.name = name;
 	}
 	public TodoCategory getCategory() {
-		return category;
+		return todoCategory;
 	}
 	public void setCategory(TodoCategory category) {
-		this.category = category;
+		this.todoCategory = category;
 	}
 	public String getDate() {
 		return date;

@@ -19,7 +19,9 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultBean<User> login(@RequestParam String email, @RequestParam String password) {
+	public ResultBean<User> login(String email, String password) {
+		if (email == null)
+			return ResultBean.failure("1001");
 		System.out.println(email + " " + password);
 		User u = userService.login(email, password);
 		if (u == null)
