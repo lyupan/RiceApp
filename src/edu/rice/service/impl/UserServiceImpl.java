@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	public void dropCourse(String email, String term, String crn) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("email", email);
-		map.put("term", term);
+		map.put("termCode", term);
 		map.put("crn", crn);
 		usermapper.dropCourse(map);
 	}
