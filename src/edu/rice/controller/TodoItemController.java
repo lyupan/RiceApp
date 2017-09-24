@@ -30,8 +30,6 @@ public class TodoItemController {
 	@RequestMapping(value="/todoitem", method = RequestMethod.POST)
 	@ResponseBody
 	public ResultBean<?> addTodoItem(@RequestParam Map<String, String> map) {
-		System.out.println(map.get("email"));
-		System.out.println(map.get("category"));
 		if (map.get("email") == null || map.get("name") == null || map.get("date") == null || map.get("category") == null)
 			return ResultBean.failure("1003");
 		todoItemService.addTodoItem(map);

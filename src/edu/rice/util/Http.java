@@ -3,7 +3,6 @@ package edu.rice.util;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +16,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import edu.rice.model.Course;
-import edu.rice.service.CourseService;
-import edu.rice.service.impl.CourseServiceImpl;
 
 /*
 http://courses.rice.edu/admweb/%21SWKSECX.main?term=201220&amp;title=&amp;course=&amp;crn=&amp;coll=&amp;dept=&amp;subj=LING

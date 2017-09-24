@@ -20,7 +20,7 @@
 	</resultMap>
 	
 	<select id="getTodoItem" resultMap="todoItemResult">
-		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where name = #{name1} and email = #{email};
+		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where name = #{name} and email = #{email};
 	</select>
 	
 	<select id="allTodoItems" resultMap="todoItemResult">
@@ -39,6 +39,9 @@
 		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where category = #{category} and email = #{email};
 	</select>
 	
+	<select id="getTodoItemsByPriority" resultMap="todoItemResult">
+		select * from todoitems join todocategories on todoitems.todoCategory = todocategories.category where priority = #{priority} and email = #{email};
+	</select>
 	
 	<insert id="addTodoItem">
 		insert into todoitems values(#{name}, #{date}, #{beginTime}, #{endTime}, #{category}, #{email}, #{description});

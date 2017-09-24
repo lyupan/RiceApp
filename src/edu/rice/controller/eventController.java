@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import edu.rice.bean.ResultBean;
 import edu.rice.model.Course;
 import edu.rice.service.UserService;
-import edu.rice.service.impl.UserServiceImpl;
 
 @Controller
 public class eventController {
@@ -46,6 +45,8 @@ public class eventController {
 		for (int i = 1;i < Maxday + 1;i++) {
 			String day = table[dayofweek(i, month, year)];
 			for (Course course : courses) {
+				if (course.getMeetingDays() == null)
+					continue;
 				String[] meetingDays = course.getMeetingDays().split(",");
 				String[] startTime = course.getStartTime().split(",");
 				String[] endTime = course.getEndTime().split(",");
@@ -58,6 +59,8 @@ public class eventController {
 						item.put("day", i+"");
 						item.put("startTime",startTime[j]);
 						item.put("endTime", endTime[j]);
+						item.put("termCode", course.getTermCode());
+						item.put("department", course.getDepartment());
 						res.add(item);
 					}
 				}	
