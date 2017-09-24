@@ -29,4 +29,5 @@ public interface UserMapper {
 	 * @return
 	 */
 	List<Course> allCourses(String email);
+	List<Course> getCourses(Map<String, Object> map);
 }

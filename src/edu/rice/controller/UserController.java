@@ -57,4 +57,10 @@ public class UserController {
 		return ResultBean.success(userService.allCourses(email));
 	}
 	
+	@RequestMapping(value="/getcourses", method = RequestMethod.POST)
+	@ResponseBody
+	public ResultBean<?> searchCourses(String termCode, String department){
+		return ResultBean.success(userService.getCourses(termCode, department));
+	}
+	
 }

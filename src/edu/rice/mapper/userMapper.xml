@@ -24,6 +24,12 @@
 	<select id="allCourses" resultType="Course">
 		select * from courses join users_courses on courses.crn = users_courses.crn and users_courses.termCode = courses.termCode where users_courses.email = #{email};
 	</select>
+	
+	<select id="getCourses" resultType="Course">
+		select * from courses  where termCode = #{termCode}<if test="department != null">
+    								     						and department = #{department}
+  									                       </if> 
+	</select>
 </mapper>
 
 
