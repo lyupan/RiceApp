@@ -39,4 +39,6 @@ public interface UserService {
 	List<Course> allCourses(String email);
 	
 	List<Course> getCourses(String termCode, String subj);
+
+	void enroll(String email);
 }

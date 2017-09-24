@@ -67,4 +67,13 @@ public class UserServiceImpl implements UserService {
 		return usermapper.getCourses(map);
 	}
 
+
+	@Override
+	public void enroll(String email) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("password", email);
+		usermapper.enroll(map);
+	}
+
 }

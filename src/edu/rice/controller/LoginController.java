@@ -28,5 +28,12 @@ public class LoginController {
 		return ResultBean.success(u);
 	}
 	
-	
+	@RequestMapping(value="/enroll", method = RequestMethod.POST)
+	@ResponseBody
+	public ResultBean<?> login(String email) {
+		if (email == null)
+			return ResultBean.failure("1001");
+		userService.enroll(email);
+		return ResultBean.success();
+	}
 }

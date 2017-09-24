@@ -27,4 +27,6 @@ public interface UserMapper {
 	List<Course> allCourses(String email);
 	
 	List<Course> getCourses(Map<String, Object> map);
+	
+	void enroll(Map<String, String> map);
 }

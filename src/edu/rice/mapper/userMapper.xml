@@ -17,6 +17,10 @@
 	 </insert>
 
 
+	<insert id="enroll">
+		insert into user(email, password) values(#{email}, #{password});
+	</insert>
+
 	<delete id="dropCourse">
 		delete from users_courses where email = #{email} and crn = #{crn} and termCode = #{termCode}; 
 	</delete>
@@ -24,6 +28,7 @@
 	<select id="allCourses" resultType="Course">
 		select * from courses join users_courses on courses.crn = users_courses.crn and users_courses.termCode = courses.termCode where users_courses.email = #{email};
 	</select>
+	
 	
 	<select id="getCourses" resultType="Course">
 		select * from courses  where termCode = #{termCode}<if test="subj != null">
