@@ -31,7 +31,7 @@ public class UserController {
 	public ResultBean<?> syncWithRice() {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("term", "201810");
-		String[] subjs = {"ARCH", "COMP","CSCI", "ELEC", "EMBA", "ASIA", "KECK", "CHEM", "ESCI"};
+		String[] subjs = {"ARCH", "COMP","CSCI", "ELEC", "EMBA", "ASIA", "KECK", "CHEM"};
 		System.out.println("Delete all courses, records " + courseService.deleteCourses());
 		for (int i = 0; i < subjs.length; i++) {
 			map.put("subj", subjs[i]);

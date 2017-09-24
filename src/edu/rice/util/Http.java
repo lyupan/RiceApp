@@ -68,8 +68,12 @@ public final class Http {
 			if (courses.courses == null)
 				return results;
 			for (Course c:courses.courses) {
-	        	if (c.getInstructor().length() > 50)
+	        	if (c.getInstructor() !=null && c.getInstructor().length() > 50)
 	        		c.setInstructor(c.getInstructor().substring(0, 50));
+	        	if (c.getStartTime() != null && c.getStartTime().length() > 45)
+	        		c.setStartTime(c.getStartTime().substring(0,45));
+	        	if (c.getEndTime() != null && c.getEndTime().length() > 45)
+	        		c.setEndTime(c.getEndTime().substring(0, 45));
 				results.add(c);
 			}
 		} catch (JAXBException e) {
